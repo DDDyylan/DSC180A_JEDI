@@ -1,3 +1,4 @@
+cd ~ #/path/to/location/where/you/want/to/store/the/checkpoints
 mkdir -p ckpts
 
 echo "Download yelp_w8.tar.gz"

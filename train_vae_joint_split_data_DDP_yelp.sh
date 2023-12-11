@@ -35,7 +35,7 @@ gpt_path=gpt2-xl
 num_gpu=1
 sym='ft_T1000_w'$ddpm_weight
 echo $sym
-ckpt='/data/yunhao/ckpts/Apr9_ftyelp_2gpu_128_b128_e50_b0.0_lr5e-5_w8' #Apr8_nopre_book_w5_128_b128_e5_b0.0_lr9e-5'  # book/Apr8_nopre_book_w5_128_b128_e5_b0.0_lr9e-5'  #/Mar21_4_new_w5_128_b128_e50_b0.0_lr5e-5   --master_port=29501 
+ckpt='../ckpts/Apr9_ftyelp_2gpu_128_b128_e50_b0.0_lr5e-5_w8' #Apr8_nopre_book_w5_128_b128_e5_b0.0_lr9e-5'  # book/Apr8_nopre_book_w5_128_b128_e5_b0.0_lr9e-5'  #/Mar21_4_new_w5_128_b128_e50_b0.0_lr5e-5   --master_port=29501 
 name='Apr17_'$sym'_'$latent_size'_b'$batch'_e'$epoch'_b'$beta'_lr'$learning_rate'_w'$ddpm_weight
 #torch.distributed.launch --nproc_per_node=$num_gpu --master_port=29503
 CUDA_VISIBLE_DEVICES=1 python -m torch.distributed.launch --nproc_per_node=$num_gpu --master_port=29503 run_lm_joint_vae_training_pretraining_new_DDP.py \
