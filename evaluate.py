@@ -86,59 +86,6 @@ def collate(examples):
     return (input_ids_bert, input_ids_gpt, token_lengths)
 logger = logging.getLogger(__name__)
 
-def evaluate(args, model_vae, encoder_tokenizer, decoder_tokenizer, table_name,eval_dataloader, prefix="", subset="test"):
-    # Loop to handle MNLI double evaluation (matched, mis-matched)
-    eval_output_dir = args.output_dir
-
-    logger.info("***** Running evaluation on {} dataset *****".format(subset))
-
-    if not os.path.exists(eval_output_dir) and args.local_rank in [-1, 0]:
-        os.makedirs(eval_output_dir)
-
-    args.eval_batch_size = args.per_gpu_eval_batch_size * max(1, args.n_gpu)
-    print(args.eval_batch_size)
-
-    # eval_dataloader = build_dataload_and_cache_examples(args, [encoder_tokenizer, decoder_tokenizer], evaluate=True)
-
-    # Eval!
-    logger.info("***** Running evaluation {} *****".format(prefix))
-    logger.info("  Num examples = %d", len(eval_dataloader))
-    logger.info("  Batch size = %d", args.eval_batch_size)
-
-    model_vae.eval()
-
-    model_vae = model_vae.module if hasattr(model_vae,
-                                            'module') else model_vae  # Take care of distributed/parallel training
-    # mi = calc_mi(model_vae, eval_dataloader, args)
-    mi = 0
-    au = calc_au(model_vae, eval_dataloader, delta=0.01, args=args)[0]
-    ppl, elbo, nll, kl = calc_iwnll(model_vae, eval_dataloader, args, ns=100)
-    # ppl, elbo, nll, kl = 0,0,0,0
-    result = {
-        "perplexity": ppl, "elbo": elbo, "kl": kl, "nll": nll, "au": au, "mi": mi
-    }
-
-    output_eval_file = os.path.join(eval_output_dir, "eval_results.txt")
-    with open(output_eval_file, "w") as writer:
-        logger.info("***** Eval results *****")
-        for key in sorted(result.keys()):
-            logger.info("  %s = %s", key, str(result[key]))
-            writer.write("%s = %s\n" % (key, str(result[key])))
-
-    row = {
-        'PartitionKey': 'MILU_Rule_Rule_Template',
-        'RowKey': str(datetime.now()),
-        'ExpName': args.ExpName,
-        'test_perplexity': str(ppl),
-        'test_elbo': str(elbo),
-        'test_nll': str(nll),
-        'test_au': str(au),
-        # 'test_mi': str(mi)
-    }
-    # pdb.set_trace()
-    # ts.insert_entity(table_name, row)
-
-    return result
 
 def calc_rec_lgy(model_vae, encoder_tokenizer, decoder_tokenizer, args, eval_dataloader,ns=1):
     from modules import sample_sequence_conditional
@@ -308,6 +255,8 @@ def calc_ppl_lgy_ddpm(model_vae, encoder_tokenizer, decoder_tokenizer, args, ns=
             generate_text.append(text_x1 + '\n')
     # loss_mean = np.mean(loss_list)
     # loss_var = np.var(loss_list)
+    if not os.path.exists(args.output_dir):
+        os.makedirs(args.output_dir)
     output_text_file = os.path.join(args.output_dir, "out_gene.txt")
     with open(output_text_file,'w') as f:
         f.write(''.join(generate_text))
@@ -529,6 +478,7 @@ def main():
     # torch.distributed.init_process_group(backend='nccl',init_method='env://')
     # torch.cuda.set_device(args.local_rank)
     # device = torch.device('cuda', args.local_rank)
+    args = parser.parse_args()
     args.device = "cuda"
 
     #encoder
@@ -630,3 +580,15 @@ def main():
     eval_dataloader =  DataLoader(train_eval_datasets['test'], num_workers=0, collate_fn=collate,batch_size=args.per_gpu_eval_batch_size)
     table_name = 'Vae' + args.dataset + 'Nz' + str(args.latent_size)
     args.n_gpu = 1
+    ###generation
+    generation_result= calc_ppl_lgy_ddpm(model.model_vae, tokenizer_encoder, tokenizer_decoder, args, 1,model.ddpm, model_ppl, tokenizer_ppl, z=None)
+    ###reconstruction
+    cal_rec_lgy_result = calc_rec_lgy(model_vae, tokenizer_encoder, tokenizer_decoder, args, eval_dataloader,ns=100)
+
+    return None
+
+
+if __name__ == "__main__":
+    main()
+
+
