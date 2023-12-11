@@ -8,6 +8,7 @@ Deep generative models are broadly implemented and applied for reconstruction, g
 1) Clone this github into your workspace \
 2) In order, run \
 ```bash DSC180A_JEDI/build_envs.sh``` \
+The line above will take a relatively long time to finish because it will run the setup.py for apex. \
 ```bash DSC180A_JEDI/download_classifiers.sh``` \
 ```bash DSC180A_JEDI/download_pretrained_models.sh```\
 This will create four folders in your workspace. \
@@ -23,10 +24,10 @@ This will create four folders in your workspace. \
    |--DSC180A_JEDI
    |   |--src
    ``` \
-3) Activate environment by running ```source .venv/bin/activate``` \
-4) For __training__ new model, cd into DSC180A_JEDI directory and run \
+4) Activate environment by running ```source .venv/bin/activate``` \
+5) For __training__ new model, cd into DSC180A_JEDI directory and run \
 ```bash train.sh``` \
 It will automatically train the model and store the checkpoints in the output directory specify in train.sh. Make sure to __change the ```output_dir``` to the  path of the folder you want to store the model__. By defualt, a __JEDI_output/LM__ folder will be created in your workspace. The folder will also contains the the evaluation result on the test set. \
-5) To simply evaluate preexisting checkpoint which is located in ```ckpts``` folder, you can run \
+6) To simply evaluate preexisting checkpoint which is located in ```ckpts``` folder, you can run \
 ```bash evaluate.sh``` \
 Make sure to __change the ```output_dir``` in ```evaluate.sh``` to be the path of the location you want to store the results__. By default a __JEDI_output/experiment__ folder will be created in your workspace. It will contains two ```.txt``` files. The first file will contains statistics that shows the performance of the model in text reconstruction. The second file will contains the generated sentences produce by the model.
