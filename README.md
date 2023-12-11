@@ -5,8 +5,7 @@ This repository replicates the result of this paper https://openreview.net/forum
 Deep generative models are broadly implemented and applied for reconstruction, generation, and representation tasks. Diffusion models, in particular, achieved amazing results in the image generation, while left insufficiently studied in natural language processing. Joint Autoencoding Diffusion (JEDI) combines Variational Autoencoders (VAEs) with diffusion models to achieve data reconstruction, generation, and representation all in one. We replicated the application of JEDI in text reconstruction and generation and named this specific branch of application JEDI-TEXT. JEDI-TEXT realized a Bleu score of 94 in text reconstruction and a perplexity of 23.4 in generation. It creates a text-diffusion framework with high versatility to various dataset and downstream tasks.
 
 ## To replicate the results
-<span style="color:red;">This text is red.</span>
-
+$\color{red} \text{Reminder: This project requires space for checkpoints and pretrained encoder/decoder. Please make sure you are in a workplace with enough space}$
 
 1) Clone this github into your workspace \
 2) In order, run \
