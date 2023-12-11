@@ -26,7 +26,7 @@ This will create four folders in your workspace. \
 3) Activate environment by running ```source .venv/bin/activate``` \
 4) For __training__ new model, cd into DSC180A_JEDI directory and run \
 ```bash train.sh``` \
-It will automatically train the model and store the checkpoints in the output directory specify in train.sh. Make sure to __change the ```output_dir``` to the  path of the folder you want to store the model__. By defualt, a __JEDI_output__ folder will be created in your workspace. The folder will also contains the the evaluation result on the test set. \
+It will automatically train the model and store the checkpoints in the output directory specify in train.sh. Make sure to __change the ```output_dir``` to the  path of the folder you want to store the model__. By defualt, a __JEDI_output/LM__ folder will be created in your workspace. The folder will also contains the the evaluation result on the test set. \
 5) To simply evaluate preexisting checkpoint which is located in ```ckpts``` folder, you can run \
 ```bash evaluate.sh``` \
-Make sure to __change the ```output_dir``` in ```evaluate.sh``` to be the path of the location you want to store the results__. Also make sure to change ```checkpoint_dir``` to the absolute or relative path where you want to store the evaluation results. It will contains two ```.txt``` files. The first file will contains statistics that shows the performance of the model in text reconstruction. The second file will contains the generated sentences produce by the model.
+Make sure to __change the ```output_dir``` in ```evaluate.sh``` to be the path of the location you want to store the results__. By default a __JEDI_output/experiment__ folder will be created in your workspace. It will contains two ```.txt``` files. The first file will contains statistics that shows the performance of the model in text reconstruction. The second file will contains the generated sentences produce by the model.
