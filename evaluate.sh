@@ -15,7 +15,7 @@ python -m evaluate \
     --length_weighted_loss  \
     --latent_size    128     \
     --evaluate_during_training --gloabl_step_eval 1   \
-    --ddpm_pretrain    1  --checkpoint_dir /data/yunhao/ckpts/Apr9_ftyelp_2gpu_128_b128_e50_b0.0_lr5e-5_w8  \
+    --ddpm_pretrain    1  --checkpoint_dir'../ckpts/Apr9_ftyelp_2gpu_128_b128_e50_b0.0_lr5e-5_w8  \
     --learning_rate 5e-5    --fix_model    84   \
     --nt    2000    \
     --ddpm_weight    8 --fp16_opt_level O2  --fp16  --use_pretrained_vae  --use_pretrained_model
