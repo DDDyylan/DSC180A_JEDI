@@ -41,6 +41,8 @@ If you have multiple GPU device, set ``CUDA_VISIBLE_DEVICE`` to the correspondin
 
 ## About Dataset
 Models will be trained and evaluated on Yelp Review dataset from hugging face: https://huggingface.co/datasets/guangyil/yelp_short_v2 \
-It is the encoded dataset, so you will not see the original texts. For original texts, you can download it by
+Data loading process is including in our training and evaluation process so it is not explicitely visible. \
+It is the encoded dataset, so you will not see the original texts. \
+If you are interested in the original texts, you can download it by
 ```bash DSC180A_JEDI/download_dataset.sh```.
 
