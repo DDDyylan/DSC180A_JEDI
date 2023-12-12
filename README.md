@@ -38,3 +38,11 @@ If you have multiple GPU device, set ``CUDA_VISIBLE_DEVICE`` to the correspondin
 ```bash evaluate.sh``` \
 Make sure to __change the ```output_dir``` in ```evaluate.sh``` to be the path of the location you want to store the results__. By default a __JEDI_output/experiment__ folder will be created in your workspace. It will contains two ```.txt``` files. The first file will contains statistics that shows the performance of the model in text reconstruction. The second file will contains the generated sentences produce by the model. \
 If you have multiple GPU device, set ``CUDA_VISIBLE_DEVICE`` to the corresponding one you will use. By default it is set to 0.
+
+## About Dataset
+Models will be trained and evaluated on Yelp Review dataset from hugging face: https://huggingface.co/datasets/guangyil/yelp_short_v2 \
+It is the encoded dataset, so you will not see the original texts. For original texts, you can download it by
+```
+bash download_dataset.sh
+```
+
