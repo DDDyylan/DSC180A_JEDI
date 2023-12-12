@@ -10,7 +10,7 @@ $\color{red} \text{Please make sure you are in a workplace with enough space.}$
 
 1) Clone this github into your workspace \
 ``` git clone https://github.com/DDDyylan/DSC180A_JEDI.git``` 
-2) In order, run \
+2) In your workspace, in order, run \
 ```bash DSC180A_JEDI/build_envs.sh``` \
 The line above will create a new .venv environment for you in order to avoid any potential issues in your environment. However, if you prefer to work with your environment, you should comment out ```python -m venv ./.venv``` and activate your environment in the bash script instead. \
 The line above will take a relatively long time to finish because it will run the setup.py for apex. \
@@ -42,5 +42,5 @@ If you have multiple GPU device, set ``CUDA_VISIBLE_DEVICE`` to the correspondin
 ## About Dataset
 Models will be trained and evaluated on Yelp Review dataset from hugging face: https://huggingface.co/datasets/guangyil/yelp_short_v2 \
 It is the encoded dataset, so you will not see the original texts. For original texts, you can download it by
-```bash download_dataset.sh```
+```bash DSC180A_JEDI/download_dataset.sh```
 
