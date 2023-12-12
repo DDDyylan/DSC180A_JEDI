@@ -30,6 +30,8 @@ This will create four folders in your workspace. \
 5) For __training__ new model, cd into DSC180A_JEDI directory and run \
 ```bash train.sh``` \
 It will automatically train the model and store the checkpoints in the output directory specify in train.sh. Make sure to __change the ```output_dir``` to the  path of the folder you want to store the model__. By defualt, a __JEDI_output/LM__ folder will be created in your workspace. The folder will also contains the the evaluation result on the test set. \
-6) To simply evaluate preexisting checkpoint which is located in ```ckpts``` folder, you can run \
+If you have multiple GPU device, set ``CUDA_VISIBLE_DEVICE`` to the corresponding one you will use. By default it is set to 0. \
+7) To simply evaluate preexisting checkpoint which is located in ```ckpts``` folder, you can run \
 ```bash evaluate.sh``` \
-Make sure to __change the ```output_dir``` in ```evaluate.sh``` to be the path of the location you want to store the results__. By default a __JEDI_output/experiment__ folder will be created in your workspace. It will contains two ```.txt``` files. The first file will contains statistics that shows the performance of the model in text reconstruction. The second file will contains the generated sentences produce by the model.
+Make sure to __change the ```output_dir``` in ```evaluate.sh``` to be the path of the location you want to store the results__. By default a __JEDI_output/experiment__ folder will be created in your workspace. It will contains two ```.txt``` files. The first file will contains statistics that shows the performance of the model in text reconstruction. The second file will contains the generated sentences produce by the model. \
+If you have multiple GPU device, set ``CUDA_VISIBLE_DEVICE`` to the corresponding one you will use. By default it is set to 0.
