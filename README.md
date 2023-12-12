@@ -12,7 +12,7 @@ $\color{red} \text{Please make sure you are in a workplace with enough space.}$
 ``` git clone https://github.com/DDDyylan/DSC180A_JEDI.git``` 
 2) In order, run \
 ```bash DSC180A_JEDI/build_envs.sh``` \
-The line above will create a new .venv environment for you in order to avoid any potential issues in your environment. However, if you prefer to work with your environment, you should comment out ```python -m venv ./.venv``` and activate your environment in the bash script instead. 
+The line above will create a new .venv environment for you in order to avoid any potential issues in your environment. However, if you prefer to work with your environment, you should comment out ```python -m venv ./.venv``` and activate your environment in the bash script instead. \
 The line above will take a relatively long time to finish because it will run the setup.py for apex. \
 ```bash DSC180A_JEDI/download_classifiers.sh``` \
 ```bash DSC180A_JEDI/download_pretrained_models.sh``` \
