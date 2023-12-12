@@ -53,10 +53,6 @@ six==1.16.0
 sympy==1.12
 tensorboardX==2.6.2.2
 tokenizers==0.15.0
-torch==2.1.1+cu118
-torchaudio==2.1.1+cu118
-torchdiffeq==0.2.3
-torchvision==0.16.1+cu118
 tqdm==4.66.1
 triton==2.1.0
 typing_extensions==4.4.0
@@ -66,4 +62,3 @@ urwid==2.3.4
 urwid-readline==0.13
 xxhash==3.4.1
 yarl==1.9.4
-Python 3.8.10
