@@ -7,6 +7,7 @@ Deep generative models are broadly implemented and applied for reconstruction, g
 ## To replicate the results
 $\color{red} \text{Reminder: This project requires space for checkpoints and pretrained encoder/decoder.}$
 $\color{red} \text{Please make sure you are in a workplace with enough space.}$
+$\color{red} \text{GPU is required. RTX 3090Ti will be sufficient}$
 
 1) Clone this github into your workspace \
 ``` git clone https://github.com/DDDyylan/DSC180A_JEDI.git``` 
